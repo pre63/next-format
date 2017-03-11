@@ -1,6 +1,6 @@
 {
   "name": "next-format",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Opinionated es-next formatter.",
   "author": {
     "name": "Simon Deshaies (pre63)"

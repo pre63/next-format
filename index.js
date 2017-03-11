@@ -1,10 +1,4 @@
-import prettier from 'prettier'
-
-const alwaysAString = (s = '') => s
-
-const compose = (...args) => a => args.reduceRight((acc, func) => func(acc), a)
-
-const replace = (exp, repl) => s => s.replace(exp, repl)
+const prettier = require('prettier')
 
 const prettify = (source) =>
   prettier.format(source, {
@@ -16,6 +10,12 @@ const prettify = (source) =>
     jsxBracketSameLine: true,
     parser: 'babylon'
   })
+
+const alwaysAString = (s = '') => s
+
+const compose = (...args) => a => args.reduceRight((acc, func) => func(acc), a)
+
+const replace = (exp, repl) => s => s.replace(exp, repl)
 
 const removeSemi = replace(';', '')
 
