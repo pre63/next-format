@@ -2,6 +2,7 @@
   "name": "next-format",
   "version": "0.0.4",
   "description": "Opinionated es-next formatter.",
+  "homepage": "https://github.com/pre63/next-format",
   "author": {
     "name": "Simon Deshaies (pre63)"
   },
@@ -9,15 +10,9 @@
     "url": "https://github.com/pre63/next-format/issues"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --recursive --compilers js:mocha-traceur *.test.js",
-    "test:watch": "./node_modules/.bin/mocha --recursive -w --compilers js:mocha-traceur *.test.js"
+    "test": "node ./tests/index.js"
   },
   "dependencies": {
     "prettier": "^0.22.0"
-  },
-  "devDependencies": {
-    "mocha": "^3.2.0",
-    "mocha-traceur": "^2.1.0",
-    "traceur": "^0.0.111"
   }
 }
