@@ -21,7 +21,7 @@ const removeSemi = replace(';', '')
 
 const removeEolSemi = replace(/;([\n\r])/gmi, '$1')
 
-const insertImportantSemi = replace(/([^=>\(]\n^[ 	]*)([\(\[`])/gmi, '$1;$2')
+const insertImportantSemi = replace(/([^=>\(,\{]\n^[ 	]*)([\(\[`])/gmi, '$1;$2')
 
 const endParenthesisRegex = /\)[\n\r 	]+\)/gmi
 
