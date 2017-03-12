@@ -20,8 +20,8 @@ const createTestData = compose(createTestObject, split('------------------------
 const tryCatch = func => {
   try {
     return func()
-  } catch (e) {
-    return e
+  } catch ({ message, actual, expected }) {
+    return { message, actual, expect: expected }
   }
 }
 
@@ -41,9 +41,10 @@ const executor = testFunc => compose(log, orPass, testFunc)
 
 const test = compose(executor, createTest, createTestData, read, make)
 
-// Acctual tests
+// Actual tests
 test('assignation')()
 test('parens-1')()
 test('parens-2')()
 test('parens-3')()
 test('semi-arrow')()
+test('semi-opening-parens')()

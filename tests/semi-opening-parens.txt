@@ -1,0 +1,17 @@
+Should not insert a semi an opening parens
+-----------------------------------
+export const a = resp =>
+  pipe(
+    assocPath(
+      [ 'aaaaaaaaaaaaaaaaaaaa', 'bbbbbbbbbbbbbbbbbbbbbbbb' ],
+      mergeEntries(resp.a.entries, resp.b)
+    ),
+    dissoc('aaaaaaaaa')
+  )(resp);
+-----------------------------------
+export const a = resp =>
+  pipe(
+    assocPath(
+      ['aaaaaaaaaaaaaaaaaaaa', 'bbbbbbbbbbbbbbbbbbbbbbbb'],
+      mergeEntries(resp.a.entries, resp.b)),
+    dissoc('aaaaaaaaa'))(resp)
