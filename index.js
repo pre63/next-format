@@ -11,24 +11,24 @@ const prettify = source =>
     parser: 'babylon',
   })
 
-const alwaysAString = (s = '') => s;
+const alwaysAString = (s = '') => s
 
-const compose = (...args) => a => args.reduceRight((acc, func) => func(acc), a);
+const compose = (...args) => a => args.reduceRight((acc, func) => func(acc), a)
 
-const replace = (exp, repl) => s => s.replace(exp, repl);
+const replace = (exp, repl) => s => s.replace(exp, repl)
 
-const removeSemi = replace(';', '');
+const removeSemi = replace(';', '')
 
-const removeEolSemi = replace(/;([\n\r])/, '$1');
+const removeEolSemi = replace(/;([\n\r])/gmi, '$1')
 
-const insertImportantSemi = replace(/([^=>]\n^[ 	]*)([\(\[`])/gmi, '$1;$2');
+const insertImportantSemi = replace(/([^=>]\n^[ 	]*)([\(\[`])/gmi, '$1;$2')
 
-const endParenthesisRegex = /\)[\n\r 	]+\)/gmi;
+const endParenthesisRegex = /\)[\n\r 	]+\)/gmi
 
 const formatEndParenthesis = source =>
   !endParenthesisRegex.exec(source)
     ? source
-    : formatEndParenthesis(source.replace(endParenthesisRegex, '))'));
+    : formatEndParenthesis(source.replace(endParenthesisRegex, '))'))
 
 module.exports = compose(
   removeEolSemi,
@@ -37,4 +37,4 @@ module.exports = compose(
   formatEndParenthesis,
   alwaysAString,
   prettify
-);
+)

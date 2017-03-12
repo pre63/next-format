@@ -9,6 +9,9 @@
   "bugs": {
     "url": "https://github.com/pre63/next-format/issues"
   },
+  "bin": {
+    "next-format": "./bin/index.js"
+  },
   "scripts": {
     "test": "node ./tests/index.js"
   },
