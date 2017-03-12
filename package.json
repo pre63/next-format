@@ -3,6 +3,7 @@
   "version": "0.0.6",
   "description": "Opinionated es-next formatter.",
   "homepage": "https://github.com/pre63/next-format",
+  "license": "MIT",
   "author": {
     "name": "Simon Deshaies (pre63)"
   },
