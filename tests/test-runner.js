@@ -15,7 +15,9 @@ const createTestObject = arr => ({
   expected: trim(arr[2]) + '\n',
 })
 
-const createTestData = compose(createTestObject, split('-----------------------------------'))
+const createTestData = compose(
+  createTestObject,
+  split('-----------------------------------'))
 
 const tryCatch = func => {
   try {
@@ -25,7 +27,7 @@ const tryCatch = func => {
     return {
       message: !expected ? e : message,
       actual,
-      expect: expected
+      expect: expected,
     }
   }
 }
@@ -33,7 +35,9 @@ const tryCatch = func => {
 const orPass = (s = 'Test Pass') => s
 
 const createTest = test =>
-  () => tryCatch(() => assert.equal(next(test.original), test.expected, test.message))
+  () =>
+    tryCatch(() =>
+      assert.equal(next(test.original), test.expected, test.message))
 
 // IMPURE
 const make = file => `${__dirname}/cases/${file}.txt`
