@@ -35,6 +35,3 @@ module.exports = compose(
   alwaysAString,
   prettify
 )
-
-//const insertImportantSemi = replace(/([^=>\|\(,\{\[+\-&]\n^[ 	]*)([\(\[`])/gmi, '$1;$2')
-//const removeSemiAfterComment = replace(/(^[ 	]+?([/*]){2,2}.+?(?!;)[\n\r]{1,2}[ 	]+?);/gmi, '$1')
