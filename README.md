@@ -1,15 +1,20 @@
 # next-format
-Opinionated es-next formatter
+Opinionated es-next formatter inspired by golang fmt.
 
-Because you should not think about formating js the same way you format golang and elm. It's the a right way of doing it.
+Because you should not think about how to format javascript, and you should never debate it, and it's basically scheme in the browser and should look alike.
 
 ## install
-
 ```
 yarn add --dev next-format
 ```
 
 ## usage
+In any directory contining `.js` files run `nextformat` in the command line and all the javascript files will be formatted.
+``` bash
+> nextformat
+```
+
+## api
 ``` javascript
 import next form 'next-format'
 ...

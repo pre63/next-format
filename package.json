@@ -1,7 +1,7 @@
 {
   "name": "next-format",
-  "version": "0.0.7",
-  "description": "Opinionated es-next formatter.",
+  "version": "0.0.8",
+  "description": "Opinionated es-next formatter inspired by golang fmt.",
   "homepage": "https://github.com/pre63/next-format",
   "license": "MIT",
   "author": {
