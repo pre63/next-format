@@ -14,4 +14,7 @@ d =>
   a
     .aaaaaaaaaaaaaaaaaa(b)
     .aaaaaaaaaaaaaaaaaaa(
-      b => !c.daaaaaaaaaaaaaaaaaa(e).f() ? g(current) : h.eaaaaaaaaaaaaaaaaaa(current))
+      b =>
+        !c.daaaaaaaaaaaaaaaaaa(e).f()
+          ? g(current)
+          : h.eaaaaaaaaaaaaaaaaaa(current))
