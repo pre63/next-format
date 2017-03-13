@@ -20,8 +20,13 @@ const createTestData = compose(createTestObject, split('------------------------
 const tryCatch = func => {
   try {
     return func()
-  } catch ({ message, actual, expected }) {
-    return { message, actual, expect: expected }
+  } catch (e) {
+    const { message, actual, expected } = e
+    return {
+      message: !expected ? e : message,
+      actual,
+      expect: expected
+    }
   }
 }
 
