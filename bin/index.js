@@ -4,6 +4,7 @@ const next = require('../')
 const fs = require('fs')
 const path = require('path')
 
+// IMPURE
 const walker = dir => {
   const many = []
   const walkSync = d => {
@@ -25,9 +26,24 @@ const walker = dir => {
 }
 
 const read = file => fs.readFileSync(file, 'UTF-8')
+
 const write = file =>
-  content => fs.writeFileSync(file, content, 'UTF-8', { flags: 'w+' })
+  content => fs.writeFileSync(file, content, 'UTF-8', {flags: 'w+'})
 
 const format = file => write(file)(next(read(file)))
 
-walker(process.cwd()).filter(f => f.toLowerCase().endsWith('.js')).map(format)
+const plurial = count => count > 1 ? 's' : ''
+
+// PROGRAM
+const startDate = Date.now()
+
+const count = walker(process.cwd())
+  .filter(f => f.toLowerCase().endsWith('.js'))
+  .map(format).length
+
+const seconds = (Date.now() - startDate) / 1000
+const average = (seconds / count).toFixed(6) * 1000000
+
+console.log(
+  `Formatted ${count} file${plurial(count)} in ${seconds}s for an avg. of ${average} ms/file`)
+
