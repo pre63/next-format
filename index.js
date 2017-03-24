@@ -22,7 +22,7 @@ const removeSemi = replace([/[ 	;]+([\n\r])/gmi, '$1'])
 const moveImportantSemi = replace([/(;)([\n\r 	]*)([\[`\(])/gmi, '$2$1$3'])
 
 const insertCurlySpaces = replace([
-  /(={)([^ }]*)(})|(^[^`'/\n]*[^$\\u=]{1,2}{)([^}\n]*)(}[^`\n]*\n)/gmi,
+  /(={)([^ }]*)(})|(^[^`'/\n]*[^$\\u=]{1,2}{)([^}\n]*[^} ])(}[^`\n]*\n)/gmi,
   '$1$4 $2$5 $3$6',
 ])
 

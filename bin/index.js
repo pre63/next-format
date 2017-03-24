@@ -42,8 +42,7 @@ const count = walker(process.cwd())
   .map(format).length
 
 const seconds = (Date.now() - startDate) / 1000
-const average = (seconds / count).toFixed(6) * 1000000
 
 console.log(
-  `Formatted ${count} file${plurial(count)} in ${seconds}s for an avg. of ${average} ms/file`)
+  `Formatted ${count} file${plurial(count)} in ${seconds}s.`)
 
