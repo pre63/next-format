@@ -11,7 +11,7 @@ const prettify = source =>
     parser: 'babylon',
   })
 
-const undefinedToString = (s = '') => s
+const alwaysAString = s => s ? String(s) : ''
 
 const compose = (...args) => a => args.reduceRight((acc, func) => func(acc), a)
 
@@ -32,8 +32,8 @@ const replaceLeft = replace([leftRegex, '$1$2'])
 const formatLeft = source =>
   !leftRegex.exec(source) ? source : formatLeft(replaceLeft(source))
 
-const rightRegex = /([\)\}])[\n\r 	]+([)\]])|[\n\r 	]+(\)(\n))/gmi
-const replaceRight = replace([rightRegex, '$1$2$3$4'])
+const rightRegex = /([\)\}])[\n\r 	]+([)\]])|(^[^/\n]*)[\n\r 	]*(\)(\n))/gmi
+const replaceRight = replace([rightRegex, '$1$2$3$4$5'])
 
 const formatRight = source =>
   !rightRegex.exec(source) ? source : formatRight(replaceRight(source))
@@ -44,6 +44,6 @@ module.exports = compose(
   formatRight,
   removeSemi,
   moveImportantSemi,
-  undefinedToString,
+  alwaysAString,
   prettify)
 
