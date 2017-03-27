@@ -14,9 +14,7 @@
     "nextformat": "./bin/index.js"
   },
   "scripts": {
-    "test": "yarn build && yarn test:cases",
-    "test:cases": "node ./tests/index.js",
-    "build": "./node_modules/.bin/webpack"
+    "test": "node ./tests/index.js",
   },
   "dependencies": {
     "prettier": "^0.22.0"
