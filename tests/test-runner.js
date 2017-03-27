@@ -1,6 +1,6 @@
 const assert = require('assert')
 const fs = require('fs')
-const next = require('../')
+const next = require('../src/next')
 
 // PURE
 const compose = (...args) => a => args.reduceRight((acc, func) => func(acc), a)
