@@ -17,14 +17,14 @@ A space should be inserted after opening curly and before closing
   const {viewport} = props
 }
 -----------------------------------
-() => {
+;() => {
   const megaMenuSaleTypeSplit = (
-    <div ref={ callbackRef }>
-      { abc(contents.categories[0], true) }
+    <div ref={callbackRef}>
+      {abc(contents.categories[0], true)}
       <div />
-      { abc(contents.categories[1], true) }
-    </div>)
-
+      {abc(contents.categories[1], true)}
+    </div>
+  )
   const isLinkLight = maybe
     ? isLight(contents.promotion['colored-left-side'])
     : contents.promotion.textColor === 'white'

@@ -10,4 +10,4 @@ Sould format end parens
 
           : h.e(current));
 -----------------------------------
-d => a.a(b).a(b => c.d(e).f() ? g(current) : h.e(current))
+d => a.a(b).a(b => (c.d(e).f() ? g(current) : h.e(current)))

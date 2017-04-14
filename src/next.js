@@ -5,10 +5,11 @@ const prettify = source =>
     printWidth: 80,
     tabWidth: 2,
     singleQuote: true,
-    trailingComma: 'es5',
-    bracketSpacing: false,
+    trailingComma: 'none',
+    bracketSpacing: true,
     jsxBracketSameLine: true,
     parser: 'babylon',
+    semi: false,
   })
 
 const alwaysAString = s => s ? String(s) : ''
@@ -32,18 +33,18 @@ const replaceLeft = replace([leftRegex, '$1$2'])
 const formatLeft = source =>
   !leftRegex.exec(source) ? source : formatLeft(replaceLeft(source))
 
-const rightRegex = /([\)\}])[\n\r 	]+([)\]])|(^[^/\n]*)[\n\r 	]*(\)(\n))/gmi
-const replaceRight = replace([rightRegex, '$1$2$3$4$5'])
+const rightRegex = /([\)\}])[\n\r 	]+([)\]])/gmi
+const replaceRight = replace([rightRegex, '$1$2'])
 
 const formatRight = source =>
   !rightRegex.exec(source) ? source : formatRight(replaceRight(source))
 
 module.exports = compose(
-  insertCurlySpaces,
-  formatLeft,
-  formatRight,
-  removeSemi,
-  moveImportantSemi,
-  alwaysAString,
+  // insertCurlySpaces,
+  // formatLeft,
+   formatRight,
+  // removeSemi,
+  // moveImportantSemi,
+  // alwaysAString,
   prettify)
 

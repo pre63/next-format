@@ -14,9 +14,9 @@
     "nextformat": "./bin/index.js"
   },
   "scripts": {
-    "test": "node ./tests/index.js",
+    "test": "node ./tests/index.js"
   },
   "dependencies": {
-    "prettier": "^0.22.0"
+    "prettier": "^1.0.2"
   }
 }
