@@ -25,12 +25,12 @@ const walker = dir => {
 
 const read = file => fs.readFileSync(file, 'UTF-8')
 
-const write = file =>
-  content => fs.writeFileSync(file, content, 'UTF-8', {flags: 'w+'})
+const write = file => content =>
+  fs.writeFileSync(file, content, 'UTF-8', { flags: 'w+' })
 
 const format = file => write(file)(next(read(file)))
 
-const plurial = count => count > 1 ? 's' : ''
+const plurial = count => (count > 1 ? 's' : '')
 
 // PROGRAM
 const startDate = Date.now()
