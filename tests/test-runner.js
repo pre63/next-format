@@ -1,10 +1,9 @@
 const assert = require('assert')
 const fs = require('fs')
 const next = require('../src/next')
+const compose = require('oncha/compose').default
 
 // PURE
-const compose = (...args) => a => args.reduceRight((acc, func) => func(acc), a)
-
 const split = c => s => s.split(c)
 
 const trim = s => s.trim()
