@@ -15,10 +15,10 @@ const prettify = source =>
 
 const alwaysAString = s => (s ? String(s) : '')
 
-const replace = ([exp, repl]) => s => s.replace(exp, repl)
+const replace = exp => repl => s => s.replace(exp, repl)
 
 const rightRegex = /([\)\}])[\n\r 	]+([)\]])/gmi
-const replaceRight = replace([rightRegex, '$1$2'])
+const replaceRight = replace(rightRegex)('$1$2')
 
 const formatRight = source =>
   (!rightRegex.exec(source) ? source : formatRight(replaceRight(source)))
