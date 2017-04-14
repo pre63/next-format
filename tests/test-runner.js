@@ -22,16 +22,15 @@ const tryCatch = func => {
   try {
     return func()
   } catch (e) {
-    const { message, actual, expected } = e
     return {
-      message: !expected ? e : message,
-      actual,
-      expect: expected
+      message: !e.expected ? e : e.message,
+      actual: e.actual,
+      expect: e.expected
     }
   }
 }
 
-const orPass = (s = 'Test Pass') => s
+const orPass = s => (s ? s : 'Test Pass')
 
 const createTest = test => () =>
   tryCatch(() => assert.equal(next(test.original), test.expected, test.message))
