@@ -14,4 +14,5 @@ export const a = resp =>
     assocPath(
       ['aaaaaaaaaaaaaaaaaaaa', 'bbbbbbbbbbbbbbbbbbbbbbbb'],
       mergeEntries(resp.a.entries, resp.b)),
-    dissoc('aaaaaaaaa'))(resp)
+    dissoc('aaaaaaaaa')
+  )(resp)

@@ -1,0 +1,40 @@
+Should not insert a semi an opening parens
+-----------------------------------
+const x = a(
+  bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb(),
+  cccccccccccccccccccccccccccccccc(),
+  dddddddddddddddddddddddddddddddd(),
+);
+const x = a(
+  b(),
+  c(),
+  d(),
+);
+const x = a({
+  b,
+  c,
+  d,
+});
+const x = a([
+  b,
+  c,
+  d,
+]);
+const x = ([
+  b,
+  c,
+  d,
+]) => ({a, b,c});
+-----------------------------------
+const x = a(
+  bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb(),
+  cccccccccccccccccccccccccccccccc(),
+  dddddddddddddddddddddddddddddddd())
+const x = a(b(), c(), d())
+const x = a({
+  b,
+  c,
+  d
+})
+const x = a([b, c, d])
+const x = ([b, c, d]) => ({ a, b, c })

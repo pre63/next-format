@@ -1,3 +1,4 @@
+const compose = require('oncha/compose').default
 const next = require('./next')
 const fs = require('fs')
 const path = require('path')
@@ -15,7 +16,7 @@ const walker = dir => {
       if (fs.statSync(p).isDirectory()) {
         walkSync(p)
       } else {
-        many.push(path.relative(dir, p))
+        many.push(path.relative(process.cwd(), p))
       }
     })
   }
@@ -33,9 +34,14 @@ const format = file => write(file)(next(read(file)))
 const plurial = count => (count > 1 ? 's' : '')
 
 // PROGRAM
+const selectPathArg = () => (process.argv[2] || '').concat('/')
+
+const selectPath = () =>
+  path.normalize(path.join(process.cwd(), selectPathArg()))
+
 const startDate = Date.now()
 
-const count = walker(process.cwd())
+const count = walker(selectPath())
   .filter(f => f.toLowerCase().endsWith('.js'))
   .map(format).length
 

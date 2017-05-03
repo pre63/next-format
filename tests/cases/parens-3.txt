@@ -15,6 +15,6 @@ d =>
     .aaaaaaaaaaaaaaaaaa(b)
     .aaaaaaaaaaaaaaaaaaa(
       b =>
-        (!c.daaaaaaaaaaaaaaaaaa(e).f()
+        !c.daaaaaaaaaaaaaaaaaa(e).f()
           ? g(current)
-          : h.eaaaaaaaaaaaaaaaaaa(current)))
+          : h.eaaaaaaaaaaaaaaaaaa(current))
