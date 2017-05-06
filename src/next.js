@@ -3,7 +3,7 @@ const prettier = require('prettier')
 
 const prettify = source =>
   prettier.format(source, {
-    printWidth: 80,
+    printWidth: 100,
     tabWidth: 2,
     singleQuote: true,
     trailingComma: 'none',

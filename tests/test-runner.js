@@ -14,9 +14,7 @@ const createTestObject = arr => ({
   expected: trim(arr[2]) + '\n'
 })
 
-const createTestData = compose(
-  createTestObject,
-  split('-----------------------------------'))
+const createTestData = compose(createTestObject, split('-----------------------------------'))
 
 const tryCatch = func => {
   try {

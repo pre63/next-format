@@ -1,20 +1,20 @@
 Sould format end parens
 -----------------------------------
-(d) =>    a.aaaaaaaaaaaaaaaaaa(b)
-      .aaaaaaaaaaaaaaaaaaa(
+(d) =>    a.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa(b)
+      .aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa(
         (
           b
           ) =>
 
-         !c.daaaaaaaaaaaaaaaaaa(e).f() ? g(current)
+         !c.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa(e).f() ? g(current)
 
-          : h.eaaaaaaaaaaaaaaaaaa(current));
+          : h.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa(current));
 -----------------------------------
 d =>
   a
-    .aaaaaaaaaaaaaaaaaa(b)
-    .aaaaaaaaaaaaaaaaaaa(
+    .aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa(b)
+    .aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa(
       b =>
-        !c.daaaaaaaaaaaaaaaaaa(e).f()
+        !c.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa(e).f()
           ? g(current)
-          : h.eaaaaaaaaaaaaaaaaaa(current))
+          : h.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa(current))

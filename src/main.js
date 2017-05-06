@@ -26,8 +26,7 @@ const walker = dir => {
 
 const read = file => fs.readFileSync(file, 'UTF-8')
 
-const write = file => content =>
-  fs.writeFileSync(file, content, 'UTF-8', { flags: 'w+' })
+const write = file => content => fs.writeFileSync(file, content, 'UTF-8', { flags: 'w+' })
 
 const format = file => write(file)(next(read(file)))
 
@@ -36,14 +35,11 @@ const plurial = count => (count > 1 ? 's' : '')
 // PROGRAM
 const selectPathArg = () => (process.argv[2] || '').concat('/')
 
-const selectPath = () =>
-  path.normalize(path.join(process.cwd(), selectPathArg()))
+const selectPath = () => path.normalize(path.join(process.cwd(), selectPathArg()))
 
 const startDate = Date.now()
 
-const count = walker(selectPath())
-  .filter(f => f.toLowerCase().endsWith('.js'))
-  .map(format).length
+const count = walker(selectPath()).filter(f => f.toLowerCase().endsWith('.js')).map(format).length
 
 const seconds = (Date.now() - startDate) / 1000
 
