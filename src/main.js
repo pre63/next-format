@@ -2,9 +2,10 @@ const compose = require('oncha/compose').default
 const next = require('./next')
 const fs = require('fs')
 const path = require('path')
+const crypto = require('crypto')
 
 // IMPURE
-const walker = dir => {
+const walker = lastRunTime => dir => {
   const many = []
   const walkSync = d => {
     if (/node_modules/g.test(d)) {
@@ -14,10 +15,11 @@ const walker = dir => {
     files.forEach(file => {
       const p = `${d}/${file}`
       const stat = fs.statSync(p)
+      const now = new Date().getTime()
 
       if (stat.isDirectory()) {
         walkSync(p)
-      } else if (now - stat.mtime.getTime() < 1000 * 60 * 5 || now - stat.ctime.getTime() < 1000 * 60 * 5) { // TODO: Replace hard-coded time with the last next-format run
+      } else if (stat.mtime.getTime() > lastRunTime || stat.ctime.getTime() > lastRunTime) {
         many.push(path.relative(process.cwd(), p))
       }
     })
@@ -28,7 +30,8 @@ const walker = dir => {
 
 const read = file => fs.readFileSync(file, 'UTF-8')
 
-const write = file => content => fs.writeFileSync(file, content, 'UTF-8', { flags: 'w+' })
+const write = file => content =>
+  fs.writeFileSync(file, content, 'UTF-8', { flags: 'w+' })
 
 const format = file => {
   const init = read(file)
@@ -37,17 +40,28 @@ const format = file => {
   init != res && write(file)(res)
 }
 
-const plurial = count => (count > 1 ? 's' : '')
+const plural = count => (count === 1 ? '' : 's')
+
+const setLastRunTime = path => write(path)(Date.now())
+
+const getLastRunTime = path => fs.existsSync(path) ? read(path) : 0
 
 // PROGRAM
 const selectPathArg = () => (process.argv[2] || '').concat('/')
 
-const selectPath = () => path.normalize(path.join(process.cwd(), selectPathArg()))
+const selectPath = () =>
+  path.normalize(path.join(process.cwd(), selectPathArg()))
 
 const startDate = Date.now()
 
-const count = walker(selectPath()).filter(f => f.toLowerCase().endsWith('.js')).map(format).length
+const lastRunPath = path.resolve(__dirname, '../.last_' + crypto.createHash('md5').update(selectPath()).digest('hex'))
+
+const count = walker(getLastRunTime(lastRunPath))(selectPath())
+  .filter(f => f.toLowerCase().endsWith('.js'))
+  .map(format).length
+
+setLastRunTime(lastRunPath)
 
 const seconds = (Date.now() - startDate) / 1000
 
-console.log(`Formatted ${count} file${plurial(count)} in ${seconds}s.`)
+console.log(`Formatted ${count} file${plural(count)} in ${seconds}s.`)
