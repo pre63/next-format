@@ -9,9 +9,9 @@ yarn add --dev next-format
 ```
 
 ## usage
-In any directory contining `.js` files run `nextformat` in the command line and all the javascript files will be formatted.
+In any directory contining `.js` files run `nextformat [path]` in the command line and all the javascript files will be formatted. `path` is optional.
 ``` bash
-> nextformat
+> nextformat ./src/
 ```
 
 ## api
