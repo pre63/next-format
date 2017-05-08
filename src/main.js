@@ -13,9 +13,11 @@ const walker = dir => {
     const files = fs.readdirSync(d)
     files.forEach(file => {
       const p = `${d}/${file}`
-      if (fs.statSync(p).isDirectory()) {
+      const stat = fs.statSync(p)
+
+      if (stat.isDirectory()) {
         walkSync(p)
-      } else {
+      } else if (now - stat.mtime.getTime() < 1000 * 60 * 5 || now - stat.ctime.getTime() < 1000 * 60 * 5) { // TODO: Replace hard-coded time with the last next-format run
         many.push(path.relative(process.cwd(), p))
       }
     })
@@ -28,7 +30,12 @@ const read = file => fs.readFileSync(file, 'UTF-8')
 
 const write = file => content => fs.writeFileSync(file, content, 'UTF-8', { flags: 'w+' })
 
-const format = file => write(file)(next(read(file)))
+const format = file => {
+  const init = read(file)
+  const res = next(init)
+
+  init != res && write(file)(res)
+}
 
 const plurial = count => (count > 1 ? 's' : '')
 
