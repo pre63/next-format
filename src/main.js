@@ -30,8 +30,7 @@ const walker = lastRunTime => dir => {
 
 const read = file => fs.readFileSync(file, 'UTF-8')
 
-const write = file => content =>
-  fs.writeFileSync(file, content, 'UTF-8', { flags: 'w+' })
+const write = file => content => fs.writeFileSync(file, content, 'UTF-8', { flags: 'w+' })
 
 const format = file => {
   const init = read(file)
@@ -44,17 +43,18 @@ const plural = count => (count === 1 ? '' : 's')
 
 const setLastRunTime = path => write(path)(Date.now())
 
-const getLastRunTime = path => fs.existsSync(path) ? read(path) : 0
+const getLastRunTime = path => (fs.existsSync(path) ? read(path) : 0)
 
 // PROGRAM
 const selectPathArg = () => (process.argv[2] || '').concat('/')
 
-const selectPath = () =>
-  path.normalize(path.join(process.cwd(), selectPathArg()))
+const selectPath = () => path.normalize(path.join(process.cwd(), selectPathArg()))
 
 const startDate = Date.now()
 
-const lastRunPath = path.resolve(__dirname, '../.last_' + crypto.createHash('md5').update(selectPath()).digest('hex'))
+const lastRunPath = path.resolve(
+  __dirname,
+  '../.last_' + crypto.createHash('md5').update(selectPath()).digest('hex'))
 
 const count = walker(getLastRunTime(lastRunPath))(selectPath())
   .filter(f => f.toLowerCase().endsWith('.js'))
