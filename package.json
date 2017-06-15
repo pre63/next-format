@@ -18,6 +18,6 @@
   },
   "dependencies": {
     "oncha": "^0.0.9",
-    "prettier": "1.3.0"
+    "prettier": "^1.4.4"
   }
 }
