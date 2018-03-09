@@ -7,5 +7,5 @@ oncha@^0.0.9:
   resolved "https://registry.yarnpkg.com/oncha/-/oncha-0.0.9.tgz#b147d3d62df6923c205b19030211cfcb9f809ddb"
 
 prettier@^1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.4.4.tgz#a8d1447b14c9bf67e6d420dcadd10fb9a4fad65a"
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.11.1.tgz#61e43fc4cd44e68f2b0dfc2c38cd4bb0fccdcc75"

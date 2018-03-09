@@ -41,7 +41,11 @@ const format = file => {
 
 const plural = count => (count === 1 ? '' : 's')
 
-const setLastRunTime = path => write(path)(Date.now())
+const setLastRunTime = path => {
+  try {
+    write(path)(Date.now())
+  } catch (_) {}
+}
 
 const getLastRunTime = path => (fs.existsSync(path) ? read(path) : 0)
 
@@ -54,7 +58,11 @@ const startDate = Date.now()
 
 const lastRunPath = path.resolve(
   __dirname,
-  '../.last_' + crypto.createHash('md5').update(selectPath()).digest('hex'))
+  '../.last_' +
+    crypto
+      .createHash('md5')
+      .update(selectPath())
+      .digest('hex'))
 
 const count = walker(getLastRunTime(lastRunPath))(selectPath())
   .filter(f => f.toLowerCase().endsWith('.js'))
