@@ -1,0 +1,5 @@
+tests
+.npmignore
+.gitignore
+.travis.yml
+.last*

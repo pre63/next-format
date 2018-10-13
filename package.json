@@ -1,6 +1,6 @@
 {
   "name": "next-format",
-  "version": "0.0.13",
+  "version": "0.0.15",
   "description": "Opinionated es-next formatter inspired by golang fmt.",
   "homepage": "https://github.com/pre63/next-format",
   "license": "MIT",
@@ -18,6 +18,6 @@
   },
   "dependencies": {
     "oncha": "^0.0.9",
-    "prettier": "^1.4.4"
+    "prettier": "1.14.3"
   }
 }
