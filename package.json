@@ -1,11 +1,11 @@
 {
   "name": "next-format",
-  "version": "0.0.15",
+  "version": "0.0.17",
   "description": "Opinionated es-next formatter inspired by golang fmt.",
   "homepage": "https://github.com/pre63/next-format",
   "license": "MIT",
   "author": {
-    "name": "Simon Deshaies (pre63)"
+    "name": "pre63"
   },
   "bugs": {
     "url": "https://github.com/pre63/next-format/issues"
@@ -17,7 +17,7 @@
     "test": "node ./tests/index.js"
   },
   "dependencies": {
-    "oncha": "^0.0.9",
+    "exalted.future": "^0.0.15",
     "prettier": "1.14.3"
   }
 }

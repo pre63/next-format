@@ -1,4 +1,3 @@
-const compose = require('oncha/compose').default
 const next = require('./next')
 const fs = require('fs')
 const path = require('path')

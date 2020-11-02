@@ -1,4 +1,4 @@
-const compose = require('oncha/compose').default
+const { compose } = require('exalted.future')
 const prettier = require('prettier')
 
 const prettify = source =>
@@ -23,4 +23,8 @@ const replaceRight = replace(rightRegex)('$1$2')
 const formatRight = source =>
   !rightRegex.exec(source) ? source : formatRight(replaceRight(source))
 
-module.exports = compose(formatRight, alwaysAString, prettify)
+module.exports = compose(
+  formatRight,
+  alwaysAString,
+  prettify
+)

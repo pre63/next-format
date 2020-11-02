@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-oncha@^0.0.9:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/oncha/-/oncha-0.0.9.tgz#b147d3d62df6923c205b19030211cfcb9f809ddb"
-  integrity sha1-sUfT1i32kjwgWxkDAhHPy5+Ands=
+exalted.future@^0.0.15:
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/exalted.future/-/exalted.future-0.0.15.tgz#6b8a83085d8994af30f8efcdc1f7da238164b242"
+  integrity sha512-3VCCUbHJd+zMBSVZEC1USBvS4QxLtynyONWAQSQHC8dgfEePx3uHZxV0SGtFcWB0lwxBTHI7cx8rNdBQ3cUKBw==
 
 prettier@1.14.3:
   version "1.14.3"

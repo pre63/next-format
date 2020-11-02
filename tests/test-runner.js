@@ -1,7 +1,7 @@
 const assert = require('assert')
 const fs = require('fs')
 const next = require('../src/next')
-const compose = require('oncha/compose').default
+const { compose } = require('exalted.future')
 
 // PURE
 const split = c => s => s.split(c)
@@ -14,7 +14,9 @@ const createTestObject = arr => ({
   expected: trim(arr[2]) + '\n'
 })
 
-const createTestData = compose(createTestObject, split('-----------------------------------'))
+const createTestData = compose(
+  createTestObject,
+  split('-----------------------------------'))
 
 const tryCatch = func => {
   try {
@@ -40,8 +42,19 @@ const read = file => fs.readFileSync(file, 'UTF-8')
 
 const log = message => console.log(message)
 
-const executor = testFunc => compose(log, orPass, testFunc)
+const executor = testFunc =>
+  compose(
+    log,
+    orPass,
+    testFunc
+  )
 
-const test = compose(executor, createTest, createTestData, read, make)
+const test = compose(
+  executor,
+  createTest,
+  createTestData,
+  read,
+  make
+)
 
 module.exports = test
